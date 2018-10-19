@@ -1,0 +1,20 @@
+package Zoo.Animal;
+
+public abstract class MammalsAnimal extends Animal {
+
+    public MammalsAnimal(String name, char sex, int weight, int size) {
+        super(name, sex, weight, size);
+    }
+
+    public void wander() {
+        System.out.println(super.getName() + " vagabonde");
+    }
+
+    public void giveBirth() {
+        if(super.getSex() == 'f') {
+            System.out.println("Félicitations ! " + super.getName() + " a mit bas !");
+        }
+    }
+
+    // TODO: La naissance d'un nouvel animal dépend de la durée de gestation ou d'incubation de l'espèce
+}
