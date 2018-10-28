@@ -10,7 +10,7 @@ public class TestMain {
         System.out.println(Utils.getListRankDomination());
 
         Wolf rex = new Wolf("Rex", 'm', 36, 37, 'β');
-        Wolf jacob = new Wolf("Jacob", 'm', 36,38,'υ');
+        Wolf jacob = new Wolf("Jacob", 'm', 36, 38,'υ');
 
         jacob.dominate(rex);
         System.out.println("Rex : " + rex);
