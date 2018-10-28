@@ -39,7 +39,17 @@ public class WolfCouple {
         int nbWolf = ThreadLocalRandom.current().nextInt(1,7+1);
 
         for(int i = 0; i < nbWolf; ++i) {
-            //Wolf wolf = new Wolf();
+        	int sex = ThreadLocalRandom.current().nextInt(1,2+1);
+        	char charSex = 'm';
+        	switch(sex) {
+        		case 1:
+        			charSex = 'm';
+        			break;
+        		case 2:
+        			charSex = 'f';
+        			break;
+        	}
+            new Wolf("wolf"+i, charSex, 2, 7, 'β');
         }
     }
 
