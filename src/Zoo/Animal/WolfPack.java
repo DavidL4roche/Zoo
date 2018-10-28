@@ -32,6 +32,6 @@ public class WolfPack {
 	}
 	
 	public void constituteCouple(Wolf alphaWolf) {
-		this.wolfCouple.
+		//this.wolfCouple.
 	}
 }
