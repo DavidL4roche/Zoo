@@ -16,11 +16,17 @@ public class Wolf extends Animal implements WalkingAnimal{
     private int violence; // TODO: facteur de violence (impétuosité)
    // private PackWolf pack; // TODO: meute des loups
 
-
     public Wolf(String name, char sex, int weight, int size, char rankDomination) {
         super(name, sex, weight, size);
+        
+        // On détermine la force à 3 si le loup est un alphal
+        if (rankDomination == 'α') {
+        	this.strength = 3;
+        }
+        else {
+        	this.strength = 1;
+        }
         this.age = 1;
-        this.strength = 1;
         this.level = 1;
         this.domination = 0;
         // Le facteur de violence est généré aléatoirement (compris entre 1 et 5)
@@ -101,6 +107,11 @@ public class Wolf extends Animal implements WalkingAnimal{
             if(this.level > wolf.getLevel() || wolf.getRankDomination() == 'ω') {
                 this.winDomination(wolf);
             }
+            
+            // TODO : Lorsque le facteur de domination est en dessous d’un certain seuil, le loup perd naturellement un
+            // rang de domination s’il n’est pas le dernier de son sexe dans la meute à l’avoir (par exemple : le
+            //		dernier mâle β d’une meute ne pourra pas devenir un mâle γ).
+            
             // On considére que lorsqu'il y a égalité dans la domination, le verdict s'effectue aléatoirement
             else if(this.level == wolf.getLevel()) {
                 System.out.println(super.getName() + " et " + wolf.getName() + " sont à  égalité, le combat est donc " +
