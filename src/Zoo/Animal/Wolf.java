@@ -102,6 +102,7 @@ public class Wolf extends Animal implements WalkingAnimal{
         System.out.println(super.getName() + " se fait dominé par " + wolf.getName());
     }
 
+    // TODO : if alpha loup gagne alors pas de changement de couple sinon oui
     public void dominate(Wolf wolf) {
         if(this.violence >= wolf.getViolence() && wolf.getRankDomination() != 'α') {
             if(this.level > wolf.getLevel() || wolf.getRankDomination() == 'ω') {
