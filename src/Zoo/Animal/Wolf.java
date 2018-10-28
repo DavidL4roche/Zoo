@@ -8,13 +8,12 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Wolf extends Animal implements WalkingAnimal{
 
     private int age; // 1 = jeune / 2 = adulte / 3 = vieux
-    private int strength; // 1 = pas fort / 2 = moyen fort / 3 = trÃ¨s fort
+    private int strength; // 1 = pas fort / 2 = moyen fort / 3 = très fort
     private int domination; // facteur de domination TODO: correspondant a  la difference entre les dominations exercees et celles subies)
     private char rankDomination; // TODO: lettre de l'alphabet grec qui represente le niveau de domination dans la meute du loup
     private int level; // TODO: correspondant au critere de qualite subjectif d'un loup, male comme femelle
     // calculé en fonction de la catégorie d'âge, de la force, du facteur de domination et du rang
     private int violence; // TODO: facteur de violence (impétuosité)
-   // private PackWolf pack; // TODO: meute des loups
 
     public Wolf(String name, char sex, int weight, int size, char rankDomination) {
         super(name, sex, weight, size);
