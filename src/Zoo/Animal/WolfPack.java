@@ -2,6 +2,8 @@ package Zoo.Animal;
 
 import java.util.ArrayList;
 
+import Zoo.Utils;
+
 public class WolfPack {
 	
 	private WolfCouple wolfCouple;
@@ -24,8 +26,10 @@ public class WolfPack {
 	
 	public void showWolfs() {
 		System.out.println("Caractéristiques des loups "
-				+ "de la meute :" + "/n"
-				+ wolfs.toString());
+				+ "de la meute :");
+		for (Wolf wolf : wolfs) {
+			System.out.println(wolf.toString());
+		}
 	}
 	
 	// TODO : Créer hiérarchie de loups
@@ -38,9 +42,12 @@ public class WolfPack {
 	}
 	
 	public void addWolf(Wolf wolf) {
+		// On n'ajoute pas un loupn déjà présent dans le couple
 		if(wolf != wolfCouple.getWolfFemale() && wolf != wolfCouple.getWolfMale()) {
-			wolfs.add(wolf);
-			System.out.println(wolf.getName() + " a été ajouté à la meute");
+			if (!wolfs.contains(wolf)) {
+				wolfs.add(wolf);
+				System.out.println(wolf.getName() + " a été ajouté à la meute");
+			}
 		}
 	}
 	
@@ -51,7 +58,7 @@ public class WolfPack {
 		}
 	}
 	
-	public void declareOmegaWolf(Wolf wolf) {
+	public void setOmegaWolf(Wolf wolf) {
 		if(wolfs.contains(wolf)) {
 			wolf.setRankDomination('ω');
 			System.out.println(wolf.getName() + " est maintenant un loup Oméga");
@@ -59,6 +66,17 @@ public class WolfPack {
 	}
 	
 	public void giveBirth() {
-		this.wolfCouple.giveBirth();
+		ArrayList<Wolf> wolfsBorn = this.wolfCouple.giveBirth();
+		for (Wolf wolf: wolfsBorn) {
+			this.addWolf(wolf);
+		}
+	}
+	
+	// TODO: Permet de décroitre les rangs de domination des loups naturellement
+	public void decreaseRank() {
+		for (Wolf wolf : wolfs) {
+			wolf.setRankDomination(Utils.decreaseRank(wolf.getRankDomination()));
+		}
+		System.out.println("Les loups de la meute ont eu leur rang de domination abaissé");
 	}
 }
