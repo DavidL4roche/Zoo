@@ -29,15 +29,19 @@ public class TestMain {
         WolfEnclosure<Wolf> wolfEnclosure = new WolfEnclosure<Wolf>("Forêt des loups", 56, 5, wolfPack);
         
         wolfPack.showWolfPack();
-        wolfPack.declareOmegaWolf(loupiot);
+        wolfPack.setOmegaWolf(loupiot);
         
         wolfEnclosure.showAnimals();
         wolfEnclosure.removeAnimal(loupiot);
         wolfEnclosure.addAnimal(loupiot);
+        wolfEnclosure.addAnimal(loupiotte);
+        wolfEnclosure.addAnimal(loulou);
         
         wolfPack.giveBirth();
         
-        
+        wolfPack.showWolfs();
+        wolfPack.decreaseRank();
+        wolfPack.showWolfs();
         
         /* Domination
          * 
