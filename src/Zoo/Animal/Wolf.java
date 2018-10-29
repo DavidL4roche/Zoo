@@ -185,14 +185,15 @@ public class Wolf extends Animal implements WalkingAnimal{
 
     @Override
     public String toString() {
-        return "Wolf{" +
-                "age=" + age +
+        return "Wolf {" +
+        		"name=" + this.getName() + 
+        		", age=" + age +
                 ", strength=" + strength +
                 ", domination=" + domination +
                 ", rankDomination=" + rankDomination +
                 ", level=" + level +
                 ", violence=" + violence +
                 ", pack=" +// pack +
-                '}';
+                "}";
     }
 }
