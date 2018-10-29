@@ -26,4 +26,14 @@ public final class Utils {
         }
         return false;
     }
+    
+    // Décrémenter le rang
+    public static char decreaseRank(char c) {
+    	if (isInListRank(c)) {
+    		int rank = listRankDomination.indexOf(c);
+    		++rank;
+    		return (char) listRankDomination.get(rank);
+    	}
+    	return (Character) null;
+    }
 }
