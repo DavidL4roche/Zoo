@@ -2,7 +2,6 @@ package Zoo.Animal;
 
 import Zoo.Utils;
 
-import javax.rmi.CORBA.Util;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Wolf extends Animal implements WalkingAnimal{
