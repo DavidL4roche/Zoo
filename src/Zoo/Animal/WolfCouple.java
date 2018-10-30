@@ -60,7 +60,7 @@ public class WolfCouple {
         	}
         	// TODO: Donner la possibilité à l'utilisateur de nommer les nouveaux nés
         	Scanner sc = new Scanner(System.in);
-        	System.out.println("Veuillez saisir un nom pour le loup " + nbWolf + " : ");
+        	System.out.println("Veuillez saisir un nom pour le loup " + (i+1) + " : ");
         	String str = sc.nextLine();
             Wolf wolf = new Wolf(str, charSex, 2, 7, 'β');
             wolfsBorn.add(wolf);
