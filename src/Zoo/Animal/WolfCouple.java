@@ -1,6 +1,7 @@
 package Zoo.Animal;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class WolfCouple {
@@ -45,6 +46,7 @@ public class WolfCouple {
         // Le nombre de loups-nés est généré aléatoirement (compris entre 1 et 7)
         int nbWolf = ThreadLocalRandom.current().nextInt(1,7+1);
         System.out.println("Félicitations ! Vous avez " + nbWolf + " loups nouveaux-nés :");
+        System.out.println("Comment souhaitez-vous les nommer ?");
         ArrayList<Wolf> wolfsBorn = new ArrayList<Wolf>();
         for(int i = 0; i < nbWolf; ++i) {
         	int sex = ThreadLocalRandom.current().nextInt(1,2+1);
@@ -58,7 +60,10 @@ public class WolfCouple {
         			break;
         	}
         	// TODO: Donner la possibilité à l'utilisateur de nommer les nouveaux nés
-            Wolf wolf = new Wolf("wolf"+i, charSex, 2, 7, 'β');
+        	Scanner sc = new Scanner(System.in);
+        	System.out.println("Veuillez saisir un nom pour le loup " + nbWolf + " : ");
+        	String str = sc.nextLine();
+            Wolf wolf = new Wolf(str, charSex, 2, 7, 'β');
             wolfsBorn.add(wolf);
             System.out.println(wolf);
         }
