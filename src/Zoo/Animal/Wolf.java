@@ -13,6 +13,8 @@ public class Wolf extends Animal implements WalkingAnimal{
     private int level; // TODO: correspondant au critere de qualite subjectif d'un loup, male comme femelle
     // calculé en fonction de la catégorie d'âge, de la force, du facteur de domination et du rang
     private int violence; // TODO: facteur de violence (impétuosité)
+    // TODO: Trouver autre chose que donnée membre
+    private WolfPack wolfPack;
 
     public Wolf(String name, char sex, int weight, int size, char rankDomination) {
         super(name, sex, weight, size);
@@ -159,7 +161,31 @@ public class Wolf extends Animal implements WalkingAnimal{
             this.rankDomination = wolf.getRankDomination();
             wolf.setRankDomination(rankDominationTemp);
         }
-
+    }
+    
+    // Hurler pour exprimer son appartenance à une meute
+    public void howlPack() {
+    	if (this.getWolfPack() != null) {
+    		System.out.println("Aouuuuh ! *Je suis le loup " + this.getName() + " et j'appartiens à la meute " + this.getWolfPack() + "*");
+    	}
+    	else {
+    		System.out.println("Aouuuuh ! *Je suis le loup " + this.getName() + " et je suis solitaire*");
+    	}
+    }
+    
+    // Hurler pour exprimer sa domination
+    public void howlDomination(Wolf wolfMenaced) {
+    	System.out.println("Aouuuuh ! *Je suis le loup " + this.getName() + " et je suis veux te dominer " + wolfMenaced.getName() + "*");
+    }   
+    
+    // Hurler pour répondre à la domination (soumission)
+    public void howlSoumission(Wolf wolfAttacker) {
+    	System.out.println("Aouuuuh ! *Je suis le loup " + this.getName() + " et je suis soumis à toi " + wolfAttacker.getName() + "*");
+    }
+    
+    // Hurler pour répondre à la domination (soumission)
+    public void howlAggresive(Wolf wolfAttacker) {
+    	System.out.println("Aouuuuh ! *Je suis le loup " + this.getName() + " et je TE domine " + wolfAttacker.getName() + "*");
     }
 
     @Override
@@ -177,6 +203,14 @@ public class Wolf extends Animal implements WalkingAnimal{
 
     public char getRankDomination() {
         return rankDomination;
+    }
+    
+    public WolfPack getWolfPack() {
+    	return wolfPack;
+    }
+    
+    public void setWolfPack(WolfPack wolfPack) {
+    	this.wolfPack = wolfPack;
     }
 
     public void setRankDomination(char rankDomination) {

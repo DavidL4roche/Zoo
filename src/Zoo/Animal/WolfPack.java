@@ -53,6 +53,7 @@ public class WolfPack {
 		if(wolf != wolfCouple.getWolfFemale() && wolf != wolfCouple.getWolfMale()) {
 			if (!wolfs.contains(wolf)) {
 				wolfs.add(wolf);
+				wolf.setWolfPack(this);
 				System.out.println(wolf.getName() + " a été ajouté à la meute");
 			}
 		}

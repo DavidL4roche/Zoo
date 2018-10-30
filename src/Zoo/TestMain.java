@@ -45,6 +45,8 @@ public class TestMain {
         wolfPack.decreaseRank();
         wolfPack.showWolfs();
         
+        rex.howlDomination();
+        
         /* Domination
          * 
          * jacob.dominate(rex);
