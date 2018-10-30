@@ -12,6 +12,8 @@ public class TestMain {
     public static void main(String [ ] args) {
         System.out.println(Utils.getListRankDomination());
         
+        System.out.println("Bienvenue sur l'application Zoo !");
+        
         WolfCouple wolfCouple = new WolfCouple();
         WolfPack wolfPack = new WolfPack(wolfCouple);
         
