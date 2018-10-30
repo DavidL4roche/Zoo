@@ -16,11 +16,18 @@ public class WolfPack {
 	}
 
 	public void showWolfPack() {
-		System.out.println("La meute de loups est constitué du couple :");
-		this.wolfCouple.showCouple();
-		System.out.println("et des loups : ");
-		for(Wolf wolf : wolfs) {
-			System.out.println(wolf.getName() + " : " + wolf);
+		if (!wolfCouple.isEmpty()) {
+			System.out.println("La meute de loups est constitué du couple :");
+			this.wolfCouple.showCouple();
+		}
+		if (!wolfs.isEmpty()) {
+			System.out.println("et des loups : ");
+			for(Wolf wolf : wolfs) {
+				System.out.println(wolf.getName() + " : " + wolf);
+			}
+		}
+		else {
+			System.out.println();
 		}
 	}
 	

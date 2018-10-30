@@ -35,7 +35,6 @@ public class WolfCouple {
         } else {
             System.out.println("Le loup femelle doit être Alpha");
         }
-
     }
 
     public void showCouple() {
@@ -78,6 +77,13 @@ public class WolfCouple {
 		return wolfFemale;
 	}
     
-    
+    public boolean isEmpty() {
+    	if (this.wolfMale == null && this.wolfFemale == null) {
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
+    }
 
 }
