@@ -121,6 +121,7 @@ public class ZooMain {
                         int randomPack = ThreadLocalRandom.current().nextInt(1,5+1);
                         if (randomPack == 1) {
                         	
+                        	System.out.println("======== CREATION D'UNE NOUVELLE MEUTE DE LOUPS ========");
                         	System.out.println("Un nouveau couple de loups va être crée, nous avons besoin de vous!");
                         	
                         	// Création du male et de la femelle du couple
@@ -141,15 +142,23 @@ public class ZooMain {
                         }
                         
             			cptRandoms += 1;
+            			
+        			// SAISON DES AMOURS, REPRODUCTION
             		case 1:
             			// Action à faire
             			cptRandoms += 1;
+            			
+        			// EVOLUTION HIERARCHIE DES MEUTES
             		case 2:
             			// Action à faire
             			cptRandoms += 1;
+            			
+        			// VIEILLISSEMENT DE LOUPS
             		case 3:
             			// Action à faire
             			cptRandoms += 1;
+            			
+        			// HURLEMENTS ENTRE LOUPS
             		case 4:
             			// Action à faire
             			cptRandoms = 0;
