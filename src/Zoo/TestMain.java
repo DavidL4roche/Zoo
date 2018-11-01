@@ -1,6 +1,7 @@
 package Zoo;
 
 import Zoo.Animal.Wolf;
+import Zoo.Animal.WolfColony;
 import Zoo.Animal.WolfCouple;
 import Zoo.Animal.WolfPack;
 import Zoo.Enclosure.WolfEnclosure;
@@ -13,9 +14,11 @@ public class TestMain {
         System.out.println(Utils.getListRankDomination());
         
         System.out.println("======== Bienvenue sur l'application Zoo ! ========");
-        
+
+        WolfColony wolfColony = new WolfColony();
+
         WolfCouple wolfCouple = new WolfCouple();
-        WolfPack wolfPack = new WolfPack(wolfCouple, "Wahouuu");
+        WolfPack wolfPack = new WolfPack(wolfColony, wolfCouple, "Wahouuu");
         
         Wolf rex = new Wolf("Rex", 'm', 36, 37, 'α');
         Wolf jacob = new Wolf("Jacobe", 'f', 36, 38,'α');
@@ -45,7 +48,7 @@ public class TestMain {
         wolfPack.decreaseRank();
         wolfPack.showWolfPack();
         
-        loupiot.howlPack();
+        loupiot.howlPack(false);
         
         //rex.howlDomination();
         

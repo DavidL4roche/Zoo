@@ -172,16 +172,32 @@ public class Wolf extends Animal implements WalkingAnimal{
     }
     
     // Hurler pour exprimer son appartenance à une meute
-    public void howlPack() {
+    public void howlPack(boolean isAnswer) {
     	if (this.getWolfPack() != null) {
     		sound();
     		System.out.println("*Je suis le loup " + this.getName() + " et j'appartiens à la meute des plus forts!*");
     		this.showCarac();
+    		if(!isAnswer) {
+    		    callOtherWolfs(true);
+            }
     	}
     	else {
     		System.out.println("Aouuuuh ! *Je suis le loup " + this.getName() + " et je suis solitaire*");
     		this.showCarac();
     	}
+    }
+
+    // Demande aux autres loups un hurlement réponse et non un hurlement d'appel
+    public void callOtherWolfs(boolean isAnswer) {
+        if(isAnswer) {
+            if(this.wolfPack != null) {
+                for(Wolf wolf : wolfPack.getWolfs()) {
+                    if(wolf != this) {
+                        wolf.howlPack(isAnswer);
+                    }
+                }
+            }
+        }
     }
     
     // Hurler pour exprimer sa domination

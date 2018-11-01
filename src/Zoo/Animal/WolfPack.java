@@ -5,13 +5,16 @@ import java.util.ArrayList;
 import Zoo.Utils;
 
 public class WolfPack {
-	
+
+	private WolfColony wolfColony;
 	private WolfCouple wolfCouple;
 	private ArrayList<Wolf> wolfs;
 	private String howl;
 	
-	public WolfPack(WolfCouple wolfCouple, String howl) {
+	public WolfPack(WolfColony wolfColony, WolfCouple wolfCouple, String howl) {
 		super();
+		this.wolfColony = wolfColony;
+		this.wolfColony.addWoldPack(this);
 		this.wolfCouple = wolfCouple;
 		this.wolfs = new ArrayList<Wolf>();
 		this.howl = howl;
@@ -93,5 +96,9 @@ public class WolfPack {
 			wolf.setRankDomination(Utils.decreaseRank(wolf.getRankDomination()));
 		}
 		System.out.println("Les loups de la meute ont eu leur rang de domination abaissé");
+	}
+
+	public ArrayList<Wolf> getWolfs() {
+		return wolfs;
 	}
 }
