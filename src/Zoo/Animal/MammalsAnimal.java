@@ -12,9 +12,7 @@ public abstract class MammalsAnimal extends Animal {
 
     public void giveBirth() {
         if(super.getSex() == 'f') {
-            System.out.println("Félicitations ! " + super.getName() + " a mit bas !");
+            System.out.println("Fï¿½licitations ! " + super.getName() + " a mit bas !");
         }
     }
-
-    // TODO: La naissance d'un nouvel animal dépend de la durée de gestation ou d'incubation de l'espèce
 }
