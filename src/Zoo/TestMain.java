@@ -6,8 +6,6 @@ import Zoo.Animal.WolfCouple;
 import Zoo.Animal.WolfPack;
 import Zoo.Enclosure.WolfEnclosure;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public class TestMain {
 
     public static void main(String [ ] args) {
@@ -18,13 +16,13 @@ public class TestMain {
         WolfColony wolfColony = new WolfColony();
 
         WolfCouple wolfCouple = new WolfCouple();
-        WolfPack wolfPack = new WolfPack(wolfColony, wolfCouple, "Wahouuu");
         
         Wolf rex = new Wolf("Rex", 'm', 36, 37, 'α');
         Wolf jacob = new Wolf("Jacobe", 'f', 36, 38,'α');
-        
         wolfCouple.setWolfMale(rex);
         wolfCouple.setWolfFemale(jacob);
+        
+        WolfPack wolfPack = new WolfPack(wolfColony, wolfCouple, "Wahouuu");
         
         Wolf loupiot = new Wolf("Loupiot", 'm', 38, 38,'π');
         Wolf loupiotte = new Wolf("loupiotte", 'f', 32, 32,'τ');
@@ -42,12 +40,13 @@ public class TestMain {
         wolfEnclosure.addAnimal(loupiotte);
         wolfEnclosure.addAnimal(loulou);
         
-        //wolfPack.giveBirth();
+        wolfPack.giveBirth();
         
         wolfPack.showWolfs();
         wolfPack.decreaseRank();
         wolfPack.showWolfPack();
         
+        System.out.println("Test hurlement de meute");
         loupiot.howlPack(false);
         
         //rex.howlDomination();

@@ -37,7 +37,12 @@ public class WolfCouple {
         }
     }
 
-    public void showCouple() {
+    public void setWolfPack(WolfPack wolfPack) {
+		this.wolfMale.setWolfPack(wolfPack);
+		this.wolfFemale.setWolfPack(wolfPack);
+	}
+
+	public void showCouple() {
         System.out.println("Loup mâle : " + wolfMale + "\nLoup femelle : " + wolfFemale);
     }
 

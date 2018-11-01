@@ -253,14 +253,14 @@ public class Wolf extends Animal implements WalkingAnimal{
     @Override
     public String toString() {
         return "Wolf {" +
-        		"name=" + this.getName() + 
+        		"Nom=" + this.getName() + 
         		", age=" + age +
-                ", strength=" + strength +
+                ", force=" + strength +
                 ", domination=" + domination +
-                ", rankDomination=" + rankDomination +
-                ", level=" + level +
+                ", rangDomination=" + rankDomination +
+                ", niveau=" + level +
                 ", violence=" + violence +
-                ", pack=" +// pack +
+                ", meute=" + (this.wolfPack != null ? "oui":"non") +
                 "}";
     }
 }

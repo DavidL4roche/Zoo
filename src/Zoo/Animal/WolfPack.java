@@ -16,6 +16,7 @@ public class WolfPack {
 		this.wolfColony = wolfColony;
 		this.wolfColony.addWoldPack(this);
 		this.wolfCouple = wolfCouple;
+		wolfCouple.setWolfPack(this);
 		this.wolfs = new ArrayList<Wolf>();
 		this.howl = howl;
 	}
@@ -49,18 +50,18 @@ public class WolfPack {
 		System.out.println("Nouvelle hiérarchie");
 	}
 	
+	// Constituer un nouveau couple
 	public void constituteCouple(Wolf maleAlphaWolf) {
 		this.wolfCouple.setWolfMale(maleAlphaWolf);
+		maleAlphaWolf.setWolfPack(this);
 	}
 	
 	public void addWolf(Wolf wolf) {
 		// On n'ajoute pas un loupn déjà présent dans le couple
-		if(wolf != wolfCouple.getWolfFemale() && wolf != wolfCouple.getWolfMale()) {
-			if (!wolfs.contains(wolf)) {
-				wolfs.add(wolf);
-				wolf.setWolfPack(this);
-				System.out.println(wolf.getName() + " a été ajouté à la meute");
-			}
+		if (!this.getWolfs().contains(wolf)) {
+			wolfs.add(wolf);
+			wolf.setWolfPack(this);
+			System.out.println(wolf.getName() + " a été ajouté à la meute");
 		}
 	}
 	
@@ -99,6 +100,10 @@ public class WolfPack {
 	}
 
 	public ArrayList<Wolf> getWolfs() {
-		return wolfs;
+		ArrayList<Wolf> allWolfs = new ArrayList();
+		allWolfs.addAll(this.wolfs);
+		allWolfs.add(this.wolfCouple.getWolfMale());
+		allWolfs.add(this.wolfCouple.getWolfFemale());
+		return allWolfs;
 	}
 }
