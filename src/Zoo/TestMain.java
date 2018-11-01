@@ -24,9 +24,10 @@ public class TestMain {
         
         WolfPack wolfPack = new WolfPack(wolfColony, wolfCouple, "Wahouuu");
         
+        Wolf loulou = new Wolf("Loulou", 'm', 36, 38,'μ');
         Wolf loupiot = new Wolf("Loupiot", 'm', 38, 38,'π');
         Wolf loupiotte = new Wolf("loupiotte", 'f', 32, 32,'τ');
-        Wolf loulou = new Wolf("Loulou", 'm', 36, 38,'μ');
+        
         //wolfCouple.showCouple();
         
         WolfEnclosure<Wolf> wolfEnclosure = new WolfEnclosure<Wolf>("Forêt des loups", 56, 5, wolfPack);
@@ -48,6 +49,8 @@ public class TestMain {
         
         System.out.println("Test hurlement de meute");
         loupiot.howlPack(false);
+        
+        wolfPack.showHierarchy();
         
         //rex.howlDomination();
         

@@ -45,9 +45,21 @@ public class WolfPack {
 		}
 	}
 	
-	// TODO : Créer hiérarchie de loups
-	public void createHierarchy(ArrayList<Wolf> wolfs) {
-		System.out.println("Nouvelle hiérarchie");
+	// Afficher la hiérarchie des loups de la meute
+	public void showHierarchy() {
+		System.out.println("Nouvelle hiérarchie de la meute :");
+		ArrayList newHierarchy = new ArrayList();
+		
+		// On parcourt tout les rangs de domination
+		for (Object c : Utils.getListRankDomination()) {
+			for (Wolf wolf : this.getWolfs()) {
+				if ((char) c == wolf.getRankDomination()) {
+					newHierarchy.add(c);
+					break;
+				}
+			}
+		}
+		System.out.println(newHierarchy);
 	}
 	
 	// Constituer un nouveau couple
