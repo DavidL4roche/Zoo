@@ -12,7 +12,7 @@ public abstract class MammalsAnimal extends Animal {
 
     public void giveBirth() {
         if(super.getSex() == 'f') {
-            System.out.println("Fï¿½licitations ! " + super.getName() + " a mit bas !");
+            System.out.println("Félicitations ! " + super.getName() + " a mit bas !");
         }
     }
 }
