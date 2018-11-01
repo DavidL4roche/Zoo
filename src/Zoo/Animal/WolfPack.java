@@ -8,11 +8,13 @@ public class WolfPack {
 	
 	private WolfCouple wolfCouple;
 	private ArrayList<Wolf> wolfs;
+	private String howl;
 	
-	public WolfPack(WolfCouple wolfCouple) {
+	public WolfPack(WolfCouple wolfCouple, String howl) {
 		super();
 		this.wolfCouple = wolfCouple;
 		this.wolfs = new ArrayList<Wolf>();
+		this.howl = howl;
 	}
 
 	public void showWolfPack() {
@@ -62,6 +64,7 @@ public class WolfPack {
 	public void removeWolf(Wolf wolf) {
 		if(wolfs.contains(wolf)) {
 			wolfs.remove(wolf);
+			wolf.setWolfPack(null);
 			System.out.println(wolf.getName() + " a été retiré de la meute");
 		}
 	}
@@ -73,6 +76,10 @@ public class WolfPack {
 		}
 	}
 	
+	public String getHowl() {
+		return howl;
+	}
+
 	public void giveBirth() {
 		ArrayList<Wolf> wolfsBorn = this.wolfCouple.giveBirth();
 		for (Wolf wolf: wolfsBorn) {

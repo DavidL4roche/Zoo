@@ -15,7 +15,7 @@ public class TestMain {
         System.out.println("======== Bienvenue sur l'application Zoo ! ========");
         
         WolfCouple wolfCouple = new WolfCouple();
-        WolfPack wolfPack = new WolfPack(wolfCouple);
+        WolfPack wolfPack = new WolfPack(wolfCouple, "Wahouuu");
         
         Wolf rex = new Wolf("Rex", 'm', 36, 37, 'α');
         Wolf jacob = new Wolf("Jacobe", 'f', 36, 38,'α');
@@ -39,13 +39,15 @@ public class TestMain {
         wolfEnclosure.addAnimal(loupiotte);
         wolfEnclosure.addAnimal(loulou);
         
-        wolfPack.giveBirth();
+        //wolfPack.giveBirth();
         
         wolfPack.showWolfs();
         wolfPack.decreaseRank();
-        wolfPack.showWolfs();
+        wolfPack.showWolfPack();
         
-        rex.howlDomination();
+        loupiot.howlPack();
+        
+        //rex.howlDomination();
         
         /* Domination
          * 

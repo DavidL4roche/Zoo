@@ -41,7 +41,11 @@ public class Wolf extends Animal implements WalkingAnimal{
     }
 
     public void sound() {
-        this.sound("Aoouuuuuh");
+    	if (this.wolfPack != null) {
+    		this.sound(wolfPack.getHowl());
+    	} else {
+    		this.sound("Aoouuuuuh");
+    	}
     }
 
     public void hear() {
@@ -163,29 +167,42 @@ public class Wolf extends Animal implements WalkingAnimal{
         }
     }
     
+    public void showCarac() {
+    	System.out.println("Regardes comment je suis bg : " + this.toString());
+    }
+    
     // Hurler pour exprimer son appartenance à une meute
     public void howlPack() {
     	if (this.getWolfPack() != null) {
-    		System.out.println("Aouuuuh ! *Je suis le loup " + this.getName() + " et j'appartiens à la meute " + this.getWolfPack() + "*");
+    		sound();
+    		System.out.println("*Je suis le loup " + this.getName() + " et j'appartiens à la meute des plus forts!*");
+    		this.showCarac();
     	}
     	else {
     		System.out.println("Aouuuuh ! *Je suis le loup " + this.getName() + " et je suis solitaire*");
+    		this.showCarac();
     	}
     }
     
     // Hurler pour exprimer sa domination
     public void howlDomination(Wolf wolfMenaced) {
-    	System.out.println("Aouuuuh ! *Je suis le loup " + this.getName() + " et je suis veux te dominer " + wolfMenaced.getName() + "*");
+    	sound();
+		System.out.println("*Je suis le loup " + this.getName() + " et je suis veux te dominer " + wolfMenaced.getName() + "*");
+		this.showCarac();
     }   
     
     // Hurler pour répondre à la domination (soumission)
     public void howlSoumission(Wolf wolfAttacker) {
-    	System.out.println("Aouuuuh ! *Je suis le loup " + this.getName() + " et je suis soumis à toi " + wolfAttacker.getName() + "*");
+    	sound();
+		System.out.println("*Je suis le loup " + this.getName() + " et je suis soumis à toi " + wolfAttacker.getName() + "*");
+		this.showCarac();
     }
     
-    // Hurler pour répondre à la domination (soumission)
+    // Hurler pour répondre à la domination (domination)
     public void howlAggresive(Wolf wolfAttacker) {
-    	System.out.println("Aouuuuh ! *Je suis le loup " + this.getName() + " et je TE domine " + wolfAttacker.getName() + "*");
+    	sound();
+		System.out.println("*Je suis le loup " + this.getName() + " et je TE domine " + wolfAttacker.getName() + "*");
+		this.showCarac();
     }
 
     @Override
