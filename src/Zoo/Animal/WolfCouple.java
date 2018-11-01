@@ -9,7 +9,10 @@ public class WolfCouple {
     private Wolf wolfMale;
     private Wolf wolfFemale;
 
-    public WolfCouple() {
+    public WolfCouple(Wolf wolfMale, Wolf wolfFemale) {
+    	this.wolfMale = wolfMale;
+    	this.wolfFemale = wolfFemale;
+    	System.out.println("Un nouveau couple de loups a été crée !");
     }
 
     public void setWolfMale(Wolf wolfMale) {
@@ -63,7 +66,6 @@ public class WolfCouple {
         			charSex = 'f';
         			break;
         	}
-        	// TODO: Donner la possibilité à l'utilisateur de nommer les nouveaux nés
         	Scanner sc = new Scanner(System.in);
         	System.out.println("Veuillez saisir un nom pour le loup " + (i+1) + " : ");
         	String str = sc.nextLine();
