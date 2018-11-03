@@ -49,7 +49,7 @@ public class WolfPack {
 	
 	// Afficher la hiérarchie des loups de la meute
 	public void showHierarchy() {
-		System.out.println("Nouvelle hiérarchie de la meute :");
+		System.out.println("Hiérarchie de la meute :");
 		ArrayList newHierarchy = new ArrayList();
 		
 		// On parcourt tout les rangs de domination
@@ -100,17 +100,21 @@ public class WolfPack {
 
 	public void giveBirth() {
 		ArrayList<Wolf> wolfsBorn = this.wolfCouple.giveBirth();
-		for (Wolf wolf: wolfsBorn) {
-			this.addWolf(wolf);
+		if (wolfsBorn != null) { 
+			for (Wolf wolf: wolfsBorn) {
+				this.addWolf(wolf);
+			}
 		}
 	}
 	
-	// TODO: Permet de décroitre les rangs de domination des loups naturellement
-	public void decreaseRank() {
-		for (Wolf wolf : wolfs) {
+	// TODO: Permet de décroitre les rangs de domination d'un loup naturellement
+	public void decreaseRank(Wolf wolf) {
+		if(wolfs.contains(wolf)) {
+			char oldRank = wolf.getRankDomination();
 			wolf.setRankDomination(Utils.decreaseRank(wolf.getRankDomination()));
+			System.out.println(wolf.getName() + " a vu son rang diminué (" + 
+					oldRank + " -> " + wolf.getRankDomination() + ")");
 		}
-		System.out.println("Les loups de la meute ont eu leur rang de domination abaissé");
 	}
 
 	public ArrayList<Wolf> getWolfs() {
