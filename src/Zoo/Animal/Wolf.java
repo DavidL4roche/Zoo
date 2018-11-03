@@ -17,7 +17,7 @@ public class Wolf extends Animal implements WalkingAnimal{
     private WolfPack wolfPack;
 
     public Wolf(String name, char sex, int weight, int size, char rankDomination) {
-        super(name, sex, weight, size);
+        super(Utils.toTitle(name), sex, weight, size);
         
         // On détermine la force à 3 si le loup est un alphal
         if (rankDomination == 'α') {
@@ -242,7 +242,11 @@ public class Wolf extends Animal implements WalkingAnimal{
     	return wolfPack;
     }
     
-    public void setWolfPack(WolfPack wolfPack) {
+    public int getAge() {
+		return age;
+	}
+
+	public void setWolfPack(WolfPack wolfPack) {
     	this.wolfPack = wolfPack;
     }
 
