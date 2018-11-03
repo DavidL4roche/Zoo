@@ -89,7 +89,7 @@ public class ZooMain {
         //wolfPack.giveBirth();
         
         wolfPack.showWolfs();
-        wolfPack.decreaseRank();
+        //wolfPack.decreaseRank();
         wolfPack.showWolfPack();
         
         System.out.println("Test hurlement de meute");
@@ -194,16 +194,21 @@ public class ZooMain {
 	                    	if (wolfColony.getWolfPacks().isEmpty()) {
 	                    		System.out.println("Aucun couple n'existe à l'instant t ! Aucune reproduction n'est possible !");
 	                    		break;
-	                    	}
-	                    	
-	                    	// S'il des couples existent alors ils peuvent se reproduire
-	                    	for (WolfPack wolfPack : wolfColony.getWolfPacks()) {
-	                    		if (wolfPack.getWolfCouple() != null) {
-	                    			wolfPack.giveBirth();
-	                    		}
-	                    		else {
-	                    			System.out.println("La meute n'as pas de couple !");
-	                    		}
+	                    	} 
+	                    	else {
+		                    	// S'il des couples existent alors ils peuvent se reproduire
+	                    		int indexPack = 0;
+		                    	for (WolfPack wolfPack : wolfColony.getWolfPacks()) {
+		                    		
+		                    		if (wolfPack.getWolfCouple() != null) {
+		                    			System.out.println("Meute numéro " + (indexPack+1));
+		                    			++indexPack;
+		                    			wolfPack.giveBirth();
+		                    		}
+		                    		else {
+		                    			System.out.println("La meute n'as pas de couple !");
+		                    		}
+		                    	}
 	                    	}
 	                    }
                     	
@@ -211,12 +216,119 @@ public class ZooMain {
 	        			
 	    			// EVOLUTION HIERARCHIE DES MEUTES
 	        		case 2:
-	        			// Action à faire
+
+	        			// On décide si on doit faire évoluer naturellement la hierarchie (généré aléatoirement, 1 chance sur 4)
+	                    int randomHierarchy = ThreadLocalRandom.current().nextInt(1,1+1);
+	                    int randomDomination;
+	                    int randomDecreaseRank;
+	                    if (randomHierarchy == 1) {
+	                    	
+	                    	System.out.println("");
+	                    	System.out.println("======== EVOLUTION NATURELLE DE LA HIERARCHIE ========");
+	                    	System.out.println("Les meutes évoluent et les hiérarchies vont peut-être changer !");
+	                    	
+	                    	//+ wolfColony.getWolfPacks().);
+	                    	
+	                    	// On vérifie si une/des meute(s) existent
+	                    	if (wolfColony.getWolfPacks().isEmpty()) {
+	                    		System.out.println("Aucune meute n'existe à l'instant t ! Les hierarchies ne peuvent évoluer !");
+	                    		break;
+	                    	} 
+	                    	else {
+		                    	// Si des meutes existent alors les hiérarchies peuvent évoluer
+		                    	for (WolfPack wolfPack : wolfColony.getWolfPacks()) {
+		                    		
+		                    		// Afficher la hiérarchie
+		                    		wolfPack.showHierarchy();
+		                    		
+		                    		// Si la meute comprend des loups
+		                    		if (wolfPack.getWolfs() != null) {
+		                    			// On parcourt les loups de la meute
+		                    			for (Wolf wolf : wolfPack.getWolfs()) {
+			                    			
+			                    			randomDomination = ThreadLocalRandom.current().nextInt(1,5+1);
+			                    			
+			                    			// On décide si on doit lancer une domination pour chaque loup (1 chance sur 5) 
+			                    			if (randomHierarchy == 1) {
+			                    				
+			                    				// On choisit le loup que l'on va essayer de dominer aléatoirement
+			                    				Wolf wolfDominated = wolf;
+			                    				int randomWolfDominated;
+			                    				
+			                    				// On choisit un loup dans la meute (différent de celui qui lance la domination)
+			                    				while (wolfDominated == wolf) {
+			                    					randomWolfDominated = ThreadLocalRandom.current().nextInt(1,wolfPack.getWolfs().size());
+			                    					wolfDominated = wolfPack.getWolfs().get(randomWolfDominated);
+			                    				}
+			                    				
+			                    				wolf.dominate(wolfDominated);
+			                    			}
+			                    			
+			                    			randomDecreaseRank = ThreadLocalRandom.current().nextInt(1,3+1);
+			                    			
+			                    			// On décide si on baisse le rang de domination du loup (1 chance sur 3) 
+			                    			if (randomDecreaseRank == 1) {
+			                    				wolfPack.decreaseRank(wolf);
+			                    			}
+		                    			}
+		                    			
+		                    			// Afficher la nouvelle hiérarchie
+			                    		System.out.print("Nouvelle ");
+		                    			wolfPack.showHierarchy();
+		                    		}
+		                    		else {
+		                    			System.out.println("La meute n'a pas de loups !");
+		                    		}
+		                    	}
+	                    	}
+	                    }
+	        			
 	        			cptRandoms += 1;
 	        			
-	    			// VIEILLISSEMENT DE LOUPS
+	    			// VIEILLISSEMENT DES LOUPS
 	        		case 3:
-	        			// Action à faire
+	        			
+	        			System.out.println("");
+                    	System.out.println("======== VIEILLISSEMENT DES LOUPS ========");
+                    	System.out.println("Le temps passe et les loups vieillissent !");
+
+	        			// On vérifie si une/des meute(s) existent
+                    	if (wolfColony.getWolfPacks().isEmpty()) {
+                    		System.out.println("Aucune meute n'existe à l'instant t ! Aucun loup ne peut vieillir !");
+                    		break;
+                    	}
+                    	else {
+                    		int cptPack;
+                    		int randomOld;
+                    		
+	                    	// Si des meutes existent alors les loups peuvent vieillir
+	                    	for (WolfPack wolfPack : wolfColony.getWolfPacks()) {
+	                    		
+	                    		// Si la meute comprend des loups
+	                    		if (wolfPack.getWolfs() != null) {
+	                    			
+	                    			// On affiche les loups actuels de la meute
+		                    		System.out.println("Loups actuels de la meute :");
+		                    		wolfPack.showWolfs();
+	                    			
+	                    			// On parcourt les loups de la meute
+	                    			for (Wolf wolf : wolfPack.getWolfs()) {
+	                    				
+		                    			// On fait vieillir tout les loups
+	                    				wolf.makeOld();
+	                    			}
+	                    			System.out.println("Les loups de la meute ont tous vieilli !");
+	                    			
+	                    			// On affiche les loups actuels de la meute
+		                    		System.out.println("Loups de la meute après vieillissement :");
+		                    		wolfPack.showWolfs();
+	                    		}
+	                    		else {
+	                    			System.out.println("La meute n'a pas de loups !");
+	                    		}
+	                    	}
+                    	}
+	        			
 	        			cptRandoms += 1;
 	        			
 	    			// HURLEMENTS ENTRE LOUPS
