@@ -71,7 +71,7 @@ public class WolfCouple {
         	String str = sc.nextLine();
             Wolf wolf = new Wolf(str, charSex, 2, 7, 'β');
             wolfsBorn.add(wolf);
-            System.out.println(wolf);
+            System.out.println("Bébé " + wolf.getName() + " est arrivé ! Félicitations !");
         }
         return wolfsBorn;
     }
