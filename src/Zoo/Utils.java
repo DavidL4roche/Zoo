@@ -36,4 +36,11 @@ public final class Utils {
     	}
     	return (Character) null;
     }
+    
+    // Mets la première lettre d'une String en majuscule
+    public static String toTitle (String s) {
+    	String s1 = s.substring(0,1).toUpperCase();
+        String sTitle = s1 + s.substring(1);
+    	return sTitle;
+    }
 }
