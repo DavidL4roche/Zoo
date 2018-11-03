@@ -152,9 +152,10 @@ public class ZooMain {
 	        		// CREATION D'UNE NOUVELLE MEUTE
 	        		case 0:
 	        			// On décide si on crée une nouvelle meute (généré aléatoirement, 1 chance sur 5)
-	                    int randomPack = ThreadLocalRandom.current().nextInt(2,5+1);
+	                    int randomPack = ThreadLocalRandom.current().nextInt(1,1+1);
 	                    if (randomPack == 1) {
 	                    	
+	                    	System.out.println("");
 	                    	System.out.println("======== CREATION D'UNE NOUVELLE MEUTE DE LOUPS ========");
 	                    	System.out.println("Un nouveau couple de loups va être crée, nous avons besoin de vous!");
 	                    	
@@ -185,12 +186,25 @@ public class ZooMain {
 	                    int randomSeason = ThreadLocalRandom.current().nextInt(1,1+1);
 	                    if (randomSeason == 1) {
 	                    	
+	                    	System.out.println("");
 	                    	System.out.println("======== SAISON DES AMOURS ========");
 	                    	System.out.println("C'est la saison des amours, nous avons peut-être des loups nouveaux-nés !");
 	                    	
 	                    	// On vérifie si un/des couple(s) existent
+	                    	if (wolfColony.getWolfPacks().isEmpty()) {
+	                    		System.out.println("Aucun couple n'existe à l'instant t ! Aucune reproduction n'est possible !");
+	                    		break;
+	                    	}
 	                    	
-	                    	
+	                    	// S'il des couples existent alors ils peuvent se reproduire
+	                    	for (WolfPack wolfPack : wolfColony.getWolfPacks()) {
+	                    		if (wolfPack.getWolfCouple() != null) {
+	                    			wolfPack.giveBirth();
+	                    		}
+	                    		else {
+	                    			System.out.println("La meute n'as pas de couple !");
+	                    		}
+	                    	}
 	                    }
                     	
 	        			cptRandoms += 1;
