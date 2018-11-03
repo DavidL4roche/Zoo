@@ -120,4 +120,8 @@ public class WolfPack {
 		allWolfs.add(this.wolfCouple.getWolfFemale());
 		return allWolfs;
 	}
+
+	public WolfCouple getWolfCouple() {
+		return wolfCouple;
+	}
 }
