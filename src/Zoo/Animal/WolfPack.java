@@ -19,6 +19,8 @@ public class WolfPack {
 		wolfCouple.setWolfPack(this);
 		this.wolfs = new ArrayList<Wolf>();
 		this.howl = howl;
+		System.out.println("Une nouvelle meute a été crée ! (Couple de la meute : " + this.wolfCouple.getWolfMale().getName() +
+						   " & " + this.wolfCouple.getWolfFemale().getName() + ", cri : \"" + this.howl + "\")");
 	}
 
 	public void showWolfPack() {

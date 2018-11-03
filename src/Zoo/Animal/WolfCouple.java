@@ -12,7 +12,7 @@ public class WolfCouple {
     public WolfCouple(Wolf wolfMale, Wolf wolfFemale) {
     	this.wolfMale = wolfMale;
     	this.wolfFemale = wolfFemale;
-    	System.out.println("Un nouveau couple de loups a été crée !");
+    	System.out.println(wolfMale.getName() + " et " + wolfFemale.getName() + " forment un nouveau couple de loups !");
     }
 
     public void setWolfMale(Wolf wolfMale) {
