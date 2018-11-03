@@ -23,4 +23,8 @@ public class WolfColony {
             this.wolfPacks.add(wolfPack);
         }
     }
+    
+    public ArrayList<WolfPack> getWolfPacks() {
+    	return this.wolfPacks;
+    }
 }
