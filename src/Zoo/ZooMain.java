@@ -105,68 +105,115 @@ public class ZooMain {
         System.out.println("Rex : " + rex);
         System.out.println("Jacob : " + jacob);*/
         
-        // Système de temps de l'application
-        try {
-        	
-        	// Compteur de randoms : définir l'évènement à produire
-        	int cptRandoms = 0;
-        	
-            while (true) {
-            	// Définir les tâches à faire grâce au Random
-            	switch(cptRandoms) {
-            	
-            		// CREATION D'UNE NOUVELLE MEUTE
-            		case 0:
-            			// On décide si on crée une nouvelle meute (généré aléatoirement, 1 chance sur 5)
-                        int randomPack = ThreadLocalRandom.current().nextInt(1,5+1);
-                        if (randomPack == 1) {
-                        	
-                        	System.out.println("======== CREATION D'UNE NOUVELLE MEUTE DE LOUPS ========");
-                        	System.out.println("Un nouveau couple de loups va être crée, nous avons besoin de vous!");
-                        	
-                        	// Création du male et de la femelle du couple
-                        	Scanner sc = new Scanner(System.in);
-                        	System.out.println("Comment souhaitez-vous nommer le mâle du couple ?");
-                        	String strMale = sc.nextLine();
-                        	Wolf male = new Wolf(strMale, 'm', 36, 37, 'α');
-                        	System.out.println("Comment souhaitez-vous nommer la femelle du couple ?");
-                        	String strFemale = sc.nextLine();
-                            Wolf female = new Wolf(strFemale, 'f', 36, 38,'α');
-                            
-                            // Création du couple
-                        	WolfCouple wolfCoupleApp = new WolfCouple(male, female);
-                            
-                            // Création de la meute
-                        	WolfPack wolfPackApp = new WolfPack(wolfColony, wolfCouple, "Wahouuu");
-                        	wolfPackApp.toString();
-                        }
-                        
-            			cptRandoms += 1;
-            			
-        			// SAISON DES AMOURS, REPRODUCTION
-            		case 1:
-            			// Action à faire
-            			cptRandoms += 1;
-            			
-        			// EVOLUTION HIERARCHIE DES MEUTES
-            		case 2:
-            			// Action à faire
-            			cptRandoms += 1;
-            			
-        			// VIEILLISSEMENT DE LOUPS
-            		case 3:
-            			// Action à faire
-            			cptRandoms += 1;
-            			
-        			// HURLEMENTS ENTRE LOUPS
-            		case 4:
-            			// Action à faire
-            			cptRandoms = 0;
-            	}
-                Thread.sleep(5 * 1000);
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        // Lancement de la simulation
+        Scanner sc = new Scanner(System.in);
+        String responseSimu = "a";
+        while (responseSimu != "O" || responseSimu != "o" || responseSimu != "N" || responseSimu != "n") {
+	        System.out.println("Souhaitez-vous démarrer la simulation ? (O/N)");
+	    	responseSimu = sc.nextLine();
+	    	switch(responseSimu) {
+	    		case "O":
+	    		case "o":
+	    			System.out.println("Très bien. La simulation va se lancer.");
+	    			launchSimulation();
+	    			break;
+	    		case "N":
+	    		case "n":
+	    			System.out.println("Tant pis pour vous, à bientôt!");
+	    			System.exit(0);
+	    		default:
+	    			System.out.println("Caractère incorrect, veuillez réessayer.");
+	    	}
         }
+    } // main
+    
+    public static void launchSimulation() {
+    	
+    	// Texte de présentation
+    	System.out.println("Vous avez décidé de lancer la simulation");
+    	System.out.println("Cinq types d'actions vont être lancées aléatoirement au fil du temps.");
+    	System.out.println("Nous vous laissons les découvrir au fur et à mesure de la simulation.");
+    	System.out.println("Bonne simulation !");
+    	
+	 	// Système de temps de l'application
+	    try {
+	    	
+	    	// Compteur de randoms : définir l'évènement à produire
+	    	int cptRandoms = 0;
+	    	Scanner sc = new Scanner(System.in);
+	    	
+	    	// Création de la colonnie
+	    	WolfColony wolfColony = new WolfColony();
+	    	
+	        while (true) {
+	        	// Définir les tâches à faire grâce au Random
+	        	switch(cptRandoms) {
+	        	
+	        		// CREATION D'UNE NOUVELLE MEUTE
+	        		case 0:
+	        			// On décide si on crée une nouvelle meute (généré aléatoirement, 1 chance sur 5)
+	                    int randomPack = ThreadLocalRandom.current().nextInt(2,5+1);
+	                    if (randomPack == 1) {
+	                    	
+	                    	System.out.println("======== CREATION D'UNE NOUVELLE MEUTE DE LOUPS ========");
+	                    	System.out.println("Un nouveau couple de loups va être crée, nous avons besoin de vous!");
+	                    	
+	                    	// Création du male et de la femelle du couple
+	                    	System.out.println("Comment souhaitez-vous nommer le mâle du couple ?");
+	                    	String strMale = sc.nextLine();
+	                    	Wolf male = new Wolf(strMale, 'm', 36, 37, 'α');
+	                    	System.out.println("Comment souhaitez-vous nommer la femelle du couple ?");
+	                    	String strFemale = sc.nextLine();
+	                        Wolf female = new Wolf(strFemale, 'f', 36, 38,'α');
+	                        
+	                        // Création du couple
+	                    	WolfCouple wolfCoupleApp = new WolfCouple(male, female);
+	                        
+	                        // Création de la meute
+	                    	System.out.println("Une nouvelle meute de loups va être créee, nous avons besoin de vous!");
+	                    	System.out.println("Quel cri de meute souhaitez-vous ? (exemple : \"Aoouuh\") ");
+	                    	String howl = sc.nextLine();
+	                    	WolfPack wolfPackApp = new WolfPack(wolfColony, wolfCoupleApp, howl);
+	                    }
+	                    
+	        			cptRandoms += 1;
+	        			
+	    			// SAISON DES AMOURS, REPRODUCTION
+	        		case 1:
+	        			
+	        			// On décide si c'est la saison des amours (généré aléatoirement, 1 chance sur 4)
+	                    int randomSeason = ThreadLocalRandom.current().nextInt(1,1+1);
+	                    if (randomSeason == 1) {
+	                    	
+	                    	System.out.println("======== SAISON DES AMOURS ========");
+	                    	System.out.println("C'est la saison des amours, nous avons peut-être des loups nouveaux-nés !");
+	                    	
+	                    	// On vérifie si un/des couple(s) existent
+	                    	
+	                    	
+	                    }
+                    	
+	        			cptRandoms += 1;
+	        			
+	    			// EVOLUTION HIERARCHIE DES MEUTES
+	        		case 2:
+	        			// Action à faire
+	        			cptRandoms += 1;
+	        			
+	    			// VIEILLISSEMENT DE LOUPS
+	        		case 3:
+	        			// Action à faire
+	        			cptRandoms += 1;
+	        			
+	    			// HURLEMENTS ENTRE LOUPS
+	        		case 4:
+	        			// Action à faire
+	        			cptRandoms = 0;
+	        	}
+	            Thread.sleep(5 * 1000);
+	        }
+	    } catch (InterruptedException e) {
+	        e.printStackTrace();
+	    }
     }
 }
