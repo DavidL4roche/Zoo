@@ -50,30 +50,38 @@ public class WolfCouple {
     }
 
     public ArrayList<Wolf> giveBirth() {
-        // Le nombre de loups-nés est généré aléatoirement (compris entre 1 et 7)
-        int nbWolf = ThreadLocalRandom.current().nextInt(1,7+1);
-        System.out.println("Félicitations ! Vous avez " + nbWolf + " loups nouveaux-nés :");
-        System.out.println("Comment souhaitez-vous les nommer ?");
-        ArrayList<Wolf> wolfsBorn = new ArrayList<Wolf>();
-        for(int i = 0; i < nbWolf; ++i) {
-        	int sex = ThreadLocalRandom.current().nextInt(1,2+1);
-        	char charSex = 'm';
-        	switch(sex) {
-        		case 1:
-        			charSex = 'm';
-        			break;
-        		case 2:
-        			charSex = 'f';
-        			break;
-        	}
-        	Scanner sc = new Scanner(System.in);
-        	System.out.println("Veuillez saisir un nom pour le loup " + (i+1) + " : ");
-        	String str = sc.nextLine();
-            Wolf wolf = new Wolf(str, charSex, 2, 7, 'β');
-            wolfsBorn.add(wolf);
-            System.out.println("Bébé " + wolf.getName() + " est arrivé ! Félicitations !");
-        }
-        return wolfsBorn;
+    	
+    	// On estime qu'un loup doit avoir 2 en âge pour procréer
+    	if (this.wolfMale.getAge() > 1 && this.wolfFemale.getAge() > 1) {
+	        // Le nombre de loups-nés est généré aléatoirement (compris entre 1 et 7)
+	        int nbWolf = ThreadLocalRandom.current().nextInt(1,7+1);
+	        System.out.println("Félicitations ! Vous avez " + nbWolf + " loups nouveaux-nés :");
+	        System.out.println("Comment souhaitez-vous les nommer ?");
+	        ArrayList<Wolf> wolfsBorn = new ArrayList<Wolf>();
+	        for(int i = 0; i < nbWolf; ++i) {
+	        	int sex = ThreadLocalRandom.current().nextInt(1,2+1);
+	        	char charSex = 'm';
+	        	switch(sex) {
+	        		case 1:
+	        			charSex = 'm';
+	        			break;
+	        		case 2:
+	        			charSex = 'f';
+	        			break;
+	        	}
+	        	Scanner sc = new Scanner(System.in);
+	        	System.out.println("Veuillez saisir un nom pour le loup " + (i+1) + " : ");
+	        	String str = sc.nextLine();
+	            Wolf wolf = new Wolf(str, charSex, 2, 7, 'β');
+	            wolfsBorn.add(wolf);
+	            System.out.println("Bébé " + wolf.getName() + " est arrivé ! Félicitations !");
+	        }
+	        return wolfsBorn;
+    	}
+    	else {
+    		System.out.println("Le couple n'est pas assez âgé pour procréer !");
+    		return null;
+    	}
     }
 
 	public Wolf getWolfMale() {
