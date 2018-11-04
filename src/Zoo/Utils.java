@@ -2,6 +2,7 @@ package Zoo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public final class Utils {
     private static ArrayList listRankDomination = new ArrayList<>(Arrays.asList('α', 'β', 'γ', 'δ', 'ε', 'ζ', 'η', 'θ', 'ι', 'κ', 'λ',
@@ -42,5 +43,13 @@ public final class Utils {
     	String s1 = s.substring(0,1).toUpperCase();
         String sTitle = s1 + s.substring(1);
     	return sTitle;
+    }
+    
+    // Permet de faire une pause dans l'execution du code en demandant à l'utilisateur de confirmer par Entrée (ou autre touche)
+    public static void takePause() {
+    	Scanner sc = new Scanner(System.in);
+    	System.out.println("");
+    	System.out.print("Appuyez sur Entrée pour continuer.");
+    	String responsePause = sc.nextLine();
     }
 }
