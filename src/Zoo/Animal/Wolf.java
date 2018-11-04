@@ -203,7 +203,7 @@ public class Wolf extends Animal implements WalkingAnimal{
     // Hurler pour exprimer sa domination
     public void howlDomination(Wolf wolfMenaced) {
     	sound();
-		System.out.println("*Je suis le loup " + this.getName() + " et je suis veux te dominer " + wolfMenaced.getName() + "*");
+		System.out.println("*Je suis le loup " + this.getName() + " et je veux te dominer " + wolfMenaced.getName() + "*");
 		this.showCarac();
     }   
     
