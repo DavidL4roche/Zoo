@@ -29,20 +29,17 @@ public class ZooMain {
         Enclosure<GoldFish> enclosure3 = new AquariumEnclosure<GoldFish>("Aquarium des petits poissons", 58,3, 5);
         Enclosure<Eagle> enclosure4 = new AviaryEnclosure<Eagle>("Volière volante", 60, 5, 35);
         Enclosure<GoldFish> enclosure5 = new AquariumEnclosure<GoldFish>("Petit aquarium", 20, 1, 3);
-
         Tiger tiger = new Tiger("Tigrou", 'm', 62, 189);
         GoldFish goldFish = new GoldFish("Nemo", 'm', 1, 2);
         GoldFish goldFish2 = new GoldFish("Marin", 'm', 1, 3);
         GoldFish goldFish3 = new GoldFish("Dory", 'f', 1,3);
         Eagle eagle = new Eagle("Royal", 'f', 5, 2);
-
         zoo.setEmployee(employee);
         zoo.addEnclosure(enclosure);
         zoo.addEnclosure(enclosure2);
         zoo.addEnclosure(enclosure3);
         zoo.addEnclosure(enclosure4);
         zoo.addEnclosure(enclosure5);
-
         enclosure2.addAnimal(tiger);
         enclosure2.addAnimal(tiger);
         enclosure3.addAnimal(goldFish);
@@ -50,12 +47,9 @@ public class ZooMain {
         enclosure3.addAnimal(goldFish3);
         enclosure3.feedAnimals();
         enclosure4.addAnimal(eagle);
-
         employee.moveAnimalFromEnclosure(goldFish2, enclosure3, enclosure5);
         employee.moveAnimalFromEnclosure(goldFish, enclosure5, enclosure3);
-
         zoo.showAllAnimals();
-
         enclosure.feedAnimals();
         
         System.out.println(Utils.getListRankDomination());
