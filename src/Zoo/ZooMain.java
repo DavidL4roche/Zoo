@@ -151,6 +151,10 @@ public class ZooMain {
 	        	
 	        		// CREATION D'UNE NOUVELLE MEUTE
 	        		case 0:
+	        		
+	        			// On fait une pause pour l'utilisateur
+	        			Utils.takePause();
+	        			
 	        			// On décide si on crée une nouvelle meute (généré aléatoirement, 1 chance sur 5)
 	                    int randomPack = ThreadLocalRandom.current().nextInt(1,1+1);
 	                    if (randomPack == 1) {
@@ -181,6 +185,9 @@ public class ZooMain {
 	        			
 	    			// SAISON DES AMOURS, REPRODUCTION
 	        		case 1:
+	        			
+	        			// On fait une pause pour l'utilisateur
+	        			Utils.takePause();
 	        			
 	        			// On décide si c'est la saison des amours (généré aléatoirement, 1 chance sur 4)
 	                    int randomSeason = ThreadLocalRandom.current().nextInt(1,1+1);
@@ -216,6 +223,9 @@ public class ZooMain {
 	        			
 	    			// EVOLUTION HIERARCHIE DES MEUTES
 	        		case 2:
+	        			
+	        			// On fait une pause pour l'utilisateur
+	        			Utils.takePause();
 
 	        			// On décide si on doit faire évoluer naturellement la hierarchie (généré aléatoirement, 1 chance sur 4)
 	                    int randomHierarchy = ThreadLocalRandom.current().nextInt(1,1+1);
@@ -242,14 +252,14 @@ public class ZooMain {
 		                    		wolfPack.showHierarchy();
 		                    		
 		                    		// Si la meute comprend des loups
-		                    		if (wolfPack.getWolfs() != null) {
+		                    		if (!wolfPack.getWolfs().isEmpty()) {
 		                    			// On parcourt les loups de la meute
 		                    			for (Wolf wolf : wolfPack.getWolfs()) {
-			                    			
+
 			                    			randomDomination = ThreadLocalRandom.current().nextInt(1,5+1);
 			                    			
 			                    			// On décide si on doit lancer une domination pour chaque loup (1 chance sur 5) 
-			                    			if (randomHierarchy == 1) {
+			                    			if (randomDomination == 1) {
 			                    				
 			                    				// On choisit le loup que l'on va essayer de dominer aléatoirement
 			                    				Wolf wolfDominated = wolf;
@@ -264,7 +274,7 @@ public class ZooMain {
 			                    				wolf.dominate(wolfDominated);
 			                    			}
 			                    			
-			                    			randomDecreaseRank = ThreadLocalRandom.current().nextInt(1,3+1);
+			                    			randomDecreaseRank = ThreadLocalRandom.current().nextInt(1,1+1);
 			                    			
 			                    			// On décide si on baisse le rang de domination du loup (1 chance sur 3) 
 			                    			if (randomDecreaseRank == 1) {
@@ -273,6 +283,7 @@ public class ZooMain {
 		                    			}
 		                    			
 		                    			// Afficher la nouvelle hiérarchie
+		                    			wolfPack.showWolfs();
 			                    		System.out.print("Nouvelle ");
 		                    			wolfPack.showHierarchy();
 		                    		}
@@ -287,6 +298,9 @@ public class ZooMain {
 	        			
 	    			// VIEILLISSEMENT DES LOUPS
 	        		case 3:
+	        			
+	        			// On fait une pause pour l'utilisateur
+	        			Utils.takePause();
 	        			
 	        			System.out.println("");
                     	System.out.println("======== VIEILLISSEMENT DES LOUPS ========");
@@ -333,6 +347,10 @@ public class ZooMain {
 	        			
 	    			// HURLEMENTS ENTRE LOUPS
 	        		case 4:
+	        			
+	        			// On fait une pause pour l'utilisateur
+	        			Utils.takePause();
+	        			
 	        			// Action à faire
 	        			cptRandoms = 0;
 	        	}
