@@ -2,9 +2,9 @@ package Zoo.Animal;
 
 public abstract class Animal {
     private String name;
-    private char sex;
+    private char sex; // m : male, f : female
     private int weight;
-    private int size;
+    private int size; // en centimètres
     private boolean hunger; // FALSE = pas faim / TRUE = a faim
     private boolean sleep; // FALSE = ne dort pas / TRUE = dort
     private boolean health; // FALSE = mauvaise santé / TRUE = bonne santé

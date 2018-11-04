@@ -15,6 +15,4 @@ public abstract class MammalsAnimal extends Animal {
             System.out.println("Félicitations ! " + super.getName() + " a mit bas !");
         }
     }
-
-    // TODO: La naissance d'un nouvel animal dépend de la durée de gestation ou d'incubation de l'espèce
 }
