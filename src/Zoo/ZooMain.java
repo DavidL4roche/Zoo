@@ -1,6 +1,5 @@
 package Zoo;
 
-import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -350,6 +349,60 @@ public class ZooMain {
 	        			
 	        			// On fait une pause pour l'utilisateur
 	        			Utils.takePause();
+	        			
+	        			System.out.println("");
+                    	System.out.println("======== HURLEMENT DES LOUPS ========");
+                    	System.out.println("Certains loups peuvent hurler pour montrer leur appartenance à une meute !");
+
+                    	// Variables utiles pour faire gueuler les loups (générées aléatoirement)
+	                    int randomHowlAll;
+	                    int randomHowlDomination;
+	                    
+                    	// On vérifie si une/des meute(s) existent
+                    	if (wolfColony.getWolfPacks().isEmpty()) {
+                    		System.out.println("Aucune meute n'existe à l'instant t ! Les loups ne peuvent pas hurler !");
+                    		break;
+                    	} 
+                    	else {
+	                    	// Si des meutes existent alors les loups peuvent hurler
+	                    	for (WolfPack wolfPack : wolfColony.getWolfPacks()) {
+	                    			                    		
+	                    		// Si la meute comprend des loups
+	                    		if (!wolfPack.getWolfs().isEmpty()) {
+	                    			// On parcourt les loups de la meute
+	                    			for (Wolf wolf : wolfPack.getWolfs()) {
+
+	                    				randomHowlDomination = ThreadLocalRandom.current().nextInt(1,5+1);
+		                    			
+		                    			// On décide si le loup doit hurler pour essayer de dominer un autre loup (1 chance sur 5) 
+		                    			if (randomHowlDomination == 1) {
+		                    				
+		                    				// On choisit le loup que l'on va essayer de dominer aléatoirement
+		                    				Wolf wolfDominated = wolf;
+		                    				int randomWolfDominated;
+		                    				
+		                    				// On choisit un loup dans la meute (différent de celui qui lance la domination)
+		                    				while (wolfDominated == wolf) {
+		                    					randomWolfDominated = ThreadLocalRandom.current().nextInt(1,wolfPack.getWolfs().size());
+		                    					wolfDominated = wolfPack.getWolfs().get(randomWolfDominated);
+		                    				}
+		                    				
+		                    				wolf.howlDomination(wolfDominated);
+		                    			}
+		                    			
+		                    			randomHowlAll = ThreadLocalRandom.current().nextInt(1,5+1);
+		                    			
+		                    			// On décide si le loup doit hurler pour montrer son appartenance à une meute (1 chance sur 5) 
+		                    			if (randomHowlAll == 1) {
+		                    				wolf.howlPack(false);
+		                    			}
+	                    			}
+	                    		}
+	                    		else {
+	                    			System.out.println("La meute n'a pas de loups !");
+	                    		}
+	                    	}
+                    	}
 	        			
 	        			// Action à faire
 	        			cptRandoms = 0;
