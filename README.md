@@ -2,8 +2,10 @@
 Java Project (Module Algorithmique et UML - Mickaël Martin-Nevot)
 
 Groupe 9 :
-BERTIN Joe
-LAROCHE David
+BERTIN Joe - LAROCHE David
+
+Github du projet :
+https://github.com/DavidL4roche/Zoo
 
 # v0.1
 - Initialisation projet
