@@ -42,6 +42,8 @@ public class WolfPack {
 	public void showWolfs() {
 		System.out.println("Caractéristiques des loups "
 				+ "de la meute :");
+		System.out.println(this.wolfCouple.getWolfMale().toString());
+		System.out.println(this.wolfCouple.getWolfFemale().toString());
 		for (Wolf wolf : wolfs) {
 			System.out.println(wolf.toString());
 		}
@@ -109,11 +111,14 @@ public class WolfPack {
 	
 	// TODO: Permet de décroitre les rangs de domination d'un loup naturellement
 	public void decreaseRank(Wolf wolf) {
-		if(wolfs.contains(wolf)) {
+		if(this.getWolfs().contains(wolf)) {
 			char oldRank = wolf.getRankDomination();
 			wolf.setRankDomination(Utils.decreaseRank(wolf.getRankDomination()));
 			System.out.println(wolf.getName() + " a vu son rang diminué (" + 
 					oldRank + " -> " + wolf.getRankDomination() + ")");
+		}
+		else {
+			System.out.println("On ne peut baisser le rang d'un loup qui n'est pas la meute");
 		}
 	}
 
